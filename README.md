@@ -1,11 +1,48 @@
 # E-Commerce Sales Analysis | Python, MySQL & Power BI
 
-An end-to-end data analytics project that transforms e-commerce source data into a cleaned master dataset, answers business questions using SQL, and presents sales and profit performance in an interactive Power BI dashboard.
+## 📌 Project Overview
+
+This project focuses on analyzing e-commerce sales data to uncover insights into revenue, profitability, customer purchasing behavior, product performance, and sales trends. Python is used to clean and prepare the original datasets, MySQL is used to answer business questions through SQL queries, and Power BI is used to develop an interactive dashboard for visualizing key performance indicators and business insights.
 
 ## Project Workflow
-![Work Flow](E-Commerce Analytics Workflow Infographic.png)
+![Work Flow](E_Commerce_Workflow.png)
 
-**Pipeline:** Original CSV files → Python data cleaning → Cleaned master dataset → MySQL business analysis → Power BI dashboard → GitHub documentation.
+✅ **Data Preparation & Cleaning (Python - Pandas)**
+- Imported four original CSV datasets: Customers, Orders, Order Items, and Products.
+- Explored dataset structure, variables, and data types.
+- Handled missing values and performed data quality checks.
+- Removed duplicate records where appropriate.
+- Standardized product categories and converted date columns.
+- Merged the datasets into a single cleaned master dataset.
+- Exported the final dataset for SQL analysis and Power BI reporting.
+
+✅ **Business Analysis (SQL)**
+- Loaded the cleaned master dataset into a MySQL database.
+- Analyzed top customers based on revenue generation.
+- Evaluated monthly revenue trends and month-over-month growth.
+- Identified high-performing acquisition channels and states.
+- Analyzed product profitability and category-wise revenue contribution.
+- Evaluated customer lifetime value and repeat purchasing behavior.
+- Compared average order values for paid and free shipping.
+- Analyzed cumulative revenue, customer rankings, product combinations, and discount performance.
+
+✅ **Visualization & Insights (Power BI)**
+- Developed an interactive e-commerce sales dashboard.
+- Created KPI cards for Total Revenue, Total Profit, Total Orders, Total Customers, and Quantity Sold.
+- Visualized revenue performance across product categories.
+- Analyzed monthly revenue trends.
+- Compared revenue across customer acquisition channels.
+- Explored state-wise revenue performance.
+- Visualized order distribution by payment method.
+- Compared profitability across product categories.
+- Added interactive slicers for date range, state, and category.
+
+✅ **Report & Presentation**
+- Summarized the project workflow, methodology, and key analytical areas.
+- Exported the Power BI dashboard as a PDF report.
+- Created a project workflow diagram to illustrate the end-to-end analytics process.
+- Documented the SQL business questions, dataset structure, and project setup instructions in GitHub.
+- Organized the Python notebook, cleaned dataset, SQL scripts, and Power BI files into a structured repository.
 
 ## Tools & Technologies
 
@@ -14,157 +51,93 @@ An end-to-end data analytics project that transforms e-commerce source data into
 - **Power BI:** KPI cards, trend analysis, category and channel comparisons, state-level analysis, payment-method visualization
 - **GitHub:** Version control and project documentation
 
-## Dataset
+## 🚀 Project Execution Steps
 
-The cleaned master dataset included in this repository contains **15,608 rows and 17 columns**.
+## Datasets
+- [customers.csv](customers.csv) — Customer information
+- [orders.csv](orders.csv) — Order details and order dates
+- [order_items.csv](order_items.csv) — Product quantities, prices, costs, and discounts
+- [products.csv](products.csv) — Product names, categories, and product information
 
-Key fields include:
+### 1. Open the Python Notebook
+[Python Analysis Notebook](ecommerce_analysis.ipynb)
 
-- Order details: `order_id`, `order_date`, `status`
-- Customer details: `customer_id`, `signup_date`, `state`
-- Product details: `product_id`, `product_name`, `category`
-- Transaction details: `quantity`, `unit_price`, `unit_cost`, `discount_amount`, `shipping_fee`
-- Marketing/payment details: `acquisition_channel`, `payment_method`, `discount_code`
+This notebook contains:
 
-The Python notebook loads four source tables (`customers`, `orders`, `order_items`, and `products`), checks data quality, standardizes product categories, converts date fields, removes duplicate order records, fills missing unit prices from product list prices where available, and merges the tables into a master dataset.
+- **Data Import:** Imported the original Customers, Orders, Order Items, and Products CSV datasets.
+- **Data Exploration:** Explored dataset structure, column names, data types, and data quality.
+- **Data Cleaning:** Handled missing values, removed duplicate records where appropriate, and standardized product categories.
+- **Data Transformation:** Converted date columns and prepared the datasets for merging.
+- **Dataset Integration:** Merged the four source datasets into a single master dataset.
+- **Cleaned Data Export:** Exported the final cleaned dataset as `ecommerce_master.csv` for MySQL business analysis and Power BI dashboard development.
 
-> **Data note:** The four original source CSVs are not included in this repository by default. The cleaned master CSV is provided. Add the original files only if you have permission to share them.
+## Cleaned Dataset
+The cleaned and merged dataset is stored in the data/processed/ folder.
 
-## Business Questions Answered with SQL
+- [ecommerce_master.csv](ecommerce_master.csv) — Final cleaned master dataset used for SQL business analysis and Power BI reporting.
 
-The SQL script covers questions including:
+### 2. Perform SQL Analysis
 
-1. Who are the top 10 customers by revenue?
-2. How does revenue change month by month?
-3. Which acquisition channels generate the most revenue and customers?
-4. Which states generate the highest sales and revenue?
-5. Which products generate the highest profit?
-6. What percentage of revenue comes from each category?
-7. What is each customer's lifetime revenue?
-8. How many repeat customers are there, and how much revenue do they contribute?
-9. Which product has the highest revenue within each category?
-10. Do paid-shipping orders have a higher average order value than free-shipping orders?
-11. What is cumulative revenue over time?
-12. How do customers rank by revenue?
-13. What is the month-over-month revenue growth rate?
-14. Which products are purchased together most frequently?
-15. Do discounted orders generate more revenue than non-discounted orders?
+[SQL Business Analysis Queries](ecommerce_analysis.sql)
 
-The SQL file also includes statements to add and calculate `revenue` and `profit` columns.
+This file contains SQL queries used to answer 15 business questions, including:
 
-### Calculation logic
+- **Top Customers by Revenue:** Identified the top 10 customers generating the highest revenue.
+- **Monthly Revenue Analysis:** Analyzed monthly revenue trends and month-over-month growth.
+- **Acquisition Channel Analysis:** Compared revenue and customer counts across acquisition channels.
+- **State-wise Sales Analysis:** Identified states generating the highest sales and revenue.
+- **Product Profitability:** Identified the most profitable products and compared profit across categories.
+- **Category Revenue Contribution:** Calculated the percentage of total revenue generated by each product category.
+- **Customer Lifetime Value:** Evaluated customer revenue contributions.
+- **Repeat Customer Analysis:** Measured repeat customers and their revenue contribution.
+- **Shipping Type Analysis:** Compared average order values between paid and free shipping orders.
+- **Cumulative Revenue Analysis:** Calculated cumulative revenue over time.
+- **Customer Revenue Ranking:** Ranked customers based on their revenue generation.
+- **Product Purchase Combinations:** Identified products frequently purchased together.
+- **Discount Analysis:** Compared revenue from discounted and non-discounted orders.
 
-- **Revenue:** `(quantity × unit_price) − discount_amount`
-- **Profit:** `(quantity × unit_price) − discount_amount − (quantity × unit_cost)`
+The SQL analysis uses aggregation, joins, Common Table Expressions (CTEs), window functions, ranking, and conditional logic to generate business insights.
 
-The SQL analysis generally filters to records with `status = 'completed'`. Check each query's filter and aggregation level when interpreting results.
 
-## Power BI Dashboard
+### 3. Open the Power BI Dashboard
 
-The dashboard summarizes sales, customer, product, and channel performance. It includes:
+[Power BI Dashboard File](ecommerce_analysis.pbix)
 
-- KPI cards for Total Revenue, Total Profit, Total Orders, Total Customers, and Quantity Sold
-- Revenue by product category
-- Monthly revenue trend
-- Revenue by acquisition channel
-- Revenue by state
-- Orders by payment method
-- Profit by category
-- Slicers for date range, state, and category
+The interactive dashboard includes:
 
-The accompanying PDF is a static export of the dashboard. Open the `.pbix` file in Power BI Desktop to explore and edit the report.
+- **Sales Performance Overview:** KPI cards displaying Total Revenue, Total Profit, Total Orders, Total Customers, and Quantity Sold.
+- **Revenue Analysis:** Analyzed monthly revenue trends to understand sales performance over time.
+- **Category Performance:** Compared revenue and profitability across product categories.
+- **Acquisition Channel Analysis:** Evaluated revenue generated by different customer acquisition channels.
+- **State-wise Sales Analysis:** Visualized revenue distribution across states.
+- **Payment Method Analysis:** Examined order distribution by payment method.
+- **Interactive Filters:** Added slicers for date range, state, and product category to explore specific segments of the data.
 
-## Repository Structure
+The `.pbix` file can be opened in Power BI Desktop to interact with the dashboard, apply filters, and explore sales and profitability insights. The PDF file provides a static overview of the dashboard.
 
-```text
-ecommerce-sales-analysis/
-├── README.md
-├── workflow.png
-├── data/
-│   └── ecommerce_master.csv
-├── notebooks/
-│   └── ecommerce_analysis.ipynb
-├── sql/
-│   └── ecommerce_analysis.sql
-└── powerbi/
-    ├── ecommerce_analysis.pbix
-    └── ecommerce_analysis.pdf
-```
+## 🔬 Methodology
+- **Data Cleaning:** Cleaned and merged four CSV datasets using Python and Pandas.
+- **SQL Analysis:** Used MySQL to answer 15 business questions about sales, customers, and products.
+- **Dashboard Development:** Created an interactive Power BI dashboard to visualize KPIs, revenue trends, and profitability.
 
-Create these folders and place each supplied file in the matching location before uploading to GitHub. Rename `ecommerce_master(4).csv` to `ecommerce_master.csv` for consistency.
+## 📊 Key Findings
+- Total Revenue: **$1.88M**
+- Total Profit: **$925.25K**
+- Total Orders: **8,456**
+- Total Customers: **2,047**
+- Organic search generated the highest revenue (**$0.77M**).
+- Furniture recorded the highest category revenue (**$0.32M**).
 
-## How to Run the Project
+## 💡 Business Recommendations
+- Invest in high-performing acquisition channels, especially organic search.
+- Improve sales and profitability in lower-performing product categories.
+- Encourage repeat purchases through customer retention strategies.
+- Monitor discounts, costs, and profit margins to improve profitability.
+- Use monthly sales trends to support inventory and marketing decisions.
 
-### 1. Python data preparation
 
-1. Open `notebooks/ecommerce_analysis.ipynb` in Jupyter Notebook or JupyterLab.
-2. Install the required packages if needed:
+## 📊 Dashboard Preview
 
-   ```bash
-   pip install pandas sqlalchemy pymysql
-   ```
-
-3. Update the source CSV file paths in the notebook to match your local folders.
-4. Run the notebook cells in order to inspect, clean, merge, and export the dataset.
-
-### 2. Load the cleaned data into MySQL
-
-1. Install and start MySQL Server.
-2. Create the database:
-
-   ```sql
-   CREATE DATABASE ecommerce_analysis;
-   USE ecommerce_analysis;
-   ```
-
-3. Import `data/ecommerce_master.csv` into a table named `ecommerce_master` using MySQL Workbench's **Table Data Import Wizard**, or use the Python SQLAlchemy loading code after configuring your database connection.
-4. Open `sql/ecommerce_analysis.sql` in MySQL Workbench and execute the queries you want to run.
-
-**Security:** Before publishing the notebook, remove any hard-coded database password or private connection details. Use local environment variables or a local, untracked configuration file for credentials. Never commit passwords, API keys, or other secrets to GitHub.
-
-### 3. Open the Power BI report
-
-1. Open `powerbi/ecommerce_analysis.pbix` in Power BI Desktop.
-2. If Power BI asks for a data source, connect it to your cleaned CSV or MySQL table, depending on how the report was built.
-3. Verify the field mappings and refresh the data if required.
-4. Save the report after confirming that visuals and slicers work.
-
-### 4. Add the project to GitHub
-
-1. Sign in to GitHub and select **New repository**.
-2. Use a repository name such as `ecommerce-sales-analysis`.
-3. Add a short description: `End-to-end e-commerce analysis using Python, MySQL and Power BI`.
-4. Choose **Public** if you want recruiters to view it, and confirm that the dataset contains no confidential or restricted data.
-5. Create the repository.
-6. On the repository page, choose **Add file → Create new file** to add `README.md`, or upload the prepared README.
-7. Upload `workflow.png` to the repository root.
-8. Create the folders shown in the repository structure and upload the notebook, cleaned CSV, SQL script, PBIX file, and PDF.
-9. Open the repository page and confirm that the README workflow image renders and all file links work.
-
-### Optional: Upload with Git
-
-After creating the repository on GitHub, open a terminal inside your local project folder and run:
-
-```bash
-git init
-git add README.md workflow.png data/ notebooks/ sql/ powerbi/
-git commit -m "Add e-commerce sales analysis project"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/ecommerce-sales-analysis.git
-git push -u origin main
-```
-
-Replace `YOUR-USERNAME` with your GitHub username and use the repository URL GitHub gives you. If Git reports that the remote already contains commits, follow GitHub's instructions to sync the repository rather than force-pushing.
-
-## Important Checks Before Publishing
-
-- Remove passwords and other secrets from the notebook.
-- Make notebook paths relative to the project, not a personal drive such as `H:\...`.
-- Confirm the revenue/profit formulas and the definition of an order are consistent across SQL and Power BI.
-- Validate dashboard totals against the SQL results; differences can occur if filters, status rules, or aggregation levels differ.
-- Include only data you are allowed to share publicly.
-- If the `.pbix` file is too large for the standard GitHub upload interface, use Git from the terminal or Git Large File Storage (Git LFS).
-
-## Project Outcome
+![Dashboard Preview](customer_shopping_behavior.png)
 
 This project demonstrates an end-to-end analytics workflow: data quality checks and preparation in Python, business-focused querying in MySQL, and interactive reporting in Power BI. It is designed to communicate actionable insights about revenue, profitability, customers, products, and sales channels.
