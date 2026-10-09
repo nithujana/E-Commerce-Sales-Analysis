@@ -3,8 +3,7 @@
 An end-to-end data analytics project that transforms e-commerce source data into a cleaned master dataset, answers business questions using SQL, and presents sales and profit performance in an interactive Power BI dashboard.
 
 ## Project Workflow
-
-![E-Commerce Sales Analysis Workflow](workflow.png)
+![Work Flow](E-Commerce Analytics Workflow Infographic.png)
 
 **Pipeline:** Original CSV files → Python data cleaning → Cleaned master dataset → MySQL business analysis → Power BI dashboard → GitHub documentation.
 
