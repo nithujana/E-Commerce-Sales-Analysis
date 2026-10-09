@@ -138,6 +138,6 @@ The `.pbix` file can be opened in Power BI Desktop to interact with the dashboar
 
 ## 📊 Dashboard Preview
 
-![Dashboard Preview](customer_shopping_behavior.png)
+![Dashboard Preview](E_Commerce_Dashboard.png)
 
 This project demonstrates an end-to-end analytics workflow: data quality checks and preparation in Python, business-focused querying in MySQL, and interactive reporting in Power BI. It is designed to communicate actionable insights about revenue, profitability, customers, products, and sales channels.
